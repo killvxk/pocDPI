@@ -25,13 +25,6 @@ typedef struct {
 } generic_context;
 
 
-//TODO: use this pseudo proto as root protocol not eth !
-typedef struct {
-	//TODO: ...
-	void **next_context[COUNT_PROTO];
-	
-	generic_context context;
-} root_context;
 
 #define call_callback(evt, args ...) if(activated_evt[evt]){ \
 			activated_evt[evt](args); \

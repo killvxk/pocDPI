@@ -22,6 +22,6 @@ struct eth_context {
 #define ETHER_TYPE_IP (0x0800)
 #define ETHER_TYPE_8021Q (0x8100)
 
-void process_eth(u_char *pkt, uint32_t pkt_len);
+void process_eth(u_char *pkt, uint32_t pkt_len, void **eth_context_list);
 
 #endif //__ETH_H__

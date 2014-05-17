@@ -9,16 +9,14 @@
 //TODO: __thread
 //TODO: collision !
 
-eth_context *eth_context_list[PROTO_HASH_SIZE];
-
 inline uint32_t hash_eth(u_char *src, u_char *dst){
 	return ((src[3]<<24 | src[2]<<16 | src[1]<<8 | src[0]) ^ (dst[3]<<24 | dst[2]<<16 | dst[1]<<8 | dst[0])) & PROTO_HASH_SIZE;
 }
 
-eth_context *get_eth_context(u_char *src, u_char *dst){
+eth_context *get_eth_context(u_char *src, u_char *dst, eth_context **eth_context_list){
 	uint32_t cur_eth_hash = hash_eth(src, dst);
 
-	eth_context *cur_eth_context = cur_eth_context = eth_context_list[cur_eth_hash];
+	eth_context *cur_eth_context = eth_context_list[cur_eth_hash];
 	while(cur_eth_context){
 		//TODO: find a better way : 
 		if((memcmp(src, cur_eth_context->src, 6) == 0 && memcmp(dst, cur_eth_context->src, 6) == 0)
@@ -59,7 +57,7 @@ eth_context *get_eth_context(u_char *src, u_char *dst){
 	return eth_context_list[cur_eth_hash];
 }
 
-void process_eth(u_char *pkt, uint32_t pkt_len){
+void process_eth(u_char *pkt, uint32_t pkt_len, void **eth_context_list){
 	//TODO: check ! CHECK ! CHECK !
 
 	u_char eth_src[6];
@@ -67,7 +65,7 @@ void process_eth(u_char *pkt, uint32_t pkt_len){
 	u_char eth_dst[6];
 	memcpy(eth_dst, pkt+6, 6);
 	
-	eth_context *cur_eth_context = get_eth_context(eth_src, eth_dst);
+	eth_context *cur_eth_context = get_eth_context(eth_src, eth_dst, eth_context_list);
 	
 	call_callback(ETH_SRC_ADDR, eth_src, cur_eth_context->user_context);
 	call_callback(ETH_DST_ADDR, eth_dst, cur_eth_context->user_context);
