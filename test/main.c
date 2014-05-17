@@ -8,11 +8,8 @@
 #include "libredpi.h"
 
 
-//TODO: make a library
-//TODO: make a test directory
 //TODO: make a protocols/tcp.c
 //TODO: TODOs
-//TODO: rename libreDPI to simpleDPI ?
 void print_ip(uint32_t ip)
 {
     unsigned char bytes[4];

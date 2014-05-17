@@ -1,7 +1,7 @@
 #ifndef __DNS_H__
 #define __DNS_H__
 
-#include "../libredpi.h"
+#include "libredpi.h"
 
 //TODO: collision
 

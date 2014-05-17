@@ -1,7 +1,7 @@
 #ifndef __UDP_H__
 #define __UDP_H__
 
-#include "../libredpi.h"
+#include "libredpi.h"
 
 //TODO: unic hash_size !
 #define UDP_HASH_SIZE 0xFF

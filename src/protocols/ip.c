@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <string.h>
 
-#include "../libredpi.h"
+#include "libredpi.h"
 
 #include "ip.h"
 #include "udp.h"

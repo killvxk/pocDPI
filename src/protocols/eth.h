@@ -1,7 +1,7 @@
 #ifndef __ETH_H__
 #define __ETH_H__
 
-#include "../libredpi.h"
+#include "libredpi.h"
 
 //TODO: try to make it generic, macro...
 typedef struct eth_context eth_context;

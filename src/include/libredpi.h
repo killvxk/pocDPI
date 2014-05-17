@@ -2,10 +2,10 @@
 #define __LIBREDPI_H__
 
 typedef enum {
-#include "protocols/eth.evt"
-#include "protocols/ip.evt"
-#include "protocols/udp.evt"
-#include "protocols/dns.evt"
+#include "../protocols/eth.evt"
+#include "../protocols/ip.evt"
+#include "../protocols/udp.evt"
+#include "../protocols/dns.evt"
 	COUNT_EVT
 } DPI_EVT;
 
@@ -24,6 +24,8 @@ typedef struct {
 	void *user_data;
 } generic_context;
 
+
+//TODO: use this pseudo proto as root protocol not eth !
 typedef struct {
 	//TODO: ...
 	void **next_context[COUNT_PROTO];
